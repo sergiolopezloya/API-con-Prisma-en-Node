@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/jest/bin/jest.js",
+    "linter": "node ./node_modules/eslint/bin/eslint.js",
+    "linter-fix": "node ./node_modules/eslint/bin/eslint.js . --fix",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,8 @@
   },
   "homepage": "https://github.com/sergiolopezloya/API-con-Prisma-en-Node#readme",
   "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-plugin-vue": "^8.7.1",
     "express": "^4.18.1",
     "prisma": "^3.13.0"
   },
