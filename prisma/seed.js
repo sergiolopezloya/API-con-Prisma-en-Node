@@ -51,6 +51,8 @@ const prisma = new PrismaClient();
     } finally {
         await prisma.$disconnect();
     }
+
+
     try {
         const mission = await prisma.mission.upsert({
             where: { name: "Node" },
@@ -76,6 +78,50 @@ const prisma = new PrismaClient();
         });
 
         console.log("Create 2 missions");
+    } catch(e) {
+        console.error(e);
+        process.exit(1);
+    } finally {
+        await prisma.$disconnect();
+    }
+
+
+    try {
+        const commander = await prisma.missionCommander.upsert({
+            where: { name: "Commander 1" },
+            update: {},
+            create: {
+                name: "Commander 1",
+                username: "commaner1",
+                mainStack: "Node",
+                currentEnrollment: true,
+                hasAzureCertification: true
+            },
+        });
+        const commander2 = await prisma.missionCommander.upsert({
+            where: { name: "Commander 2" },
+            update: {},
+            create: {
+                name: "Commander 2",
+                username: "commaner2",
+                mainStack: "Java",
+                currentEnrollment: true,
+                hasAzureCertification: true
+            },
+        });
+        const commander3 = await prisma.missionCommander.upsert({
+            where: { name: "Commander 3" },
+            update: {},
+            create: {
+                name: "Commander 3",
+                username: "commaner3",
+                mainStack: "Node",
+                currentEnrollment: true,
+                hasAzureCertification: true
+            },
+        });
+
+        console.log("Create 3 commanders");
     } catch(e) {
         console.error(e);
         process.exit(1);
