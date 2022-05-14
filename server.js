@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 // Cors
 const cors = require("cors");
 const corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://192.168.1.68:8081"
 };
 
 app.use(cors(corsOptions));
@@ -123,6 +123,7 @@ app.get("/missioncommanders", async (req, res) => {
 
 app.get("/missioncommanders/:id", async (req, res) => {
     const id = req.params.id;
+    console.log(id);
     const mission = await prisma.missionCommander.findUnique({where: {id: parseInt(id)}});
     res.json(mission);
 });
